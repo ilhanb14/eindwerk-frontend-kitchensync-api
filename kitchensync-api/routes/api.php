@@ -47,3 +47,13 @@ Route::put('/accounts/{id}', function(\Illuminate\Http\Request $request, $id) {
         return response()->json(['message' => 'Account updated succesfully', 200]);
     }
 });
+
+// Delete account
+Route::delete('/accounts/{id}', function($id) {
+    $deleted = DB::delete('DELETE FROM accounts WHERE id = ?', [$id]);
+    if ($deleted === 0) {
+        return response()->json(['message' => 'Account not found'], 404);
+    } else {
+        return response()->json(['message' => 'Account deleted successfully', 200]);
+    }
+});
