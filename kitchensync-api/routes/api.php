@@ -31,3 +31,19 @@ Route::post('/accounts', function (\Illuminate\Http\Request $request) {
 
     return response()->json(['message' => 'Account created successfully'], 201);
 });
+
+// Update account
+Route::put('/accounts/{id}', function(\Illuminate\Http\Request $request, $id) {
+    $first_name = $request->input('first_name');
+    $last_name = $request->input('last_name');
+    $email = $request->input('email');
+    $account_type_id = $request->input('account_type_id');
+
+    $affected = DB::update('UPDATE accounts SET first_name = ?, last_name = ?, email = ?, account_type_id = ? WHERE id = ?', [$first_name, $last_name, $email, $account_type_id, $id]);
+
+    if($affected === 0) {
+        return response()->json(['message' => 'Account not found or no changes made'], 404);
+    } else {
+        return response()->json(['message' => 'Account updated succesfully', 200]);
+    }
+});
