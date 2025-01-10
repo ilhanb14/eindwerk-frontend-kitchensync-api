@@ -7,14 +7,32 @@ use Illuminate\Http\Request;
 
 class AccountController extends Controller {
     // Get all accounts
-    public function index()
+    public function getall()
     {
         $accounts = Account::all();
         return response()->json($accounts);
     }
 
+    // Get account by id
+    public function getone($id)
+    {
+        $account = Account::find($id);
+        if (!$account) {
+            return response()->json(['message' => 'Account not found'], 404);
+        }
+
+        return response()->json($account);
+    }
+
+    // Add account
+    public function post(Request $request)
+    {
+        $account = Account::create($request->all());
+        return response()->json(['message' => 'Account created successfully'], 201);
+    }
+    
     // Update account
-    public function update(Request $request, $id)
+    public function put(Request $request, $id)
     {
         $account = Account::find($id);
         if (!$account) {
@@ -26,7 +44,7 @@ class AccountController extends Controller {
     }
 
     // Delete account
-    public function destroy($id)
+    public function delete($id)
     {
         $account = Account::find($id);
         if (!$account) {
@@ -36,5 +54,4 @@ class AccountController extends Controller {
         $account->delete();
         return response()->json(['message' => 'Account deleted successfully']);
     }
-
 }
