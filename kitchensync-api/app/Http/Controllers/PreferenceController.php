@@ -7,14 +7,14 @@ use Illuminate\Http\Request;
 
 class PreferenceController extends Controller {
     // Get all preferences
-    public function getall()
+    public function getAll()
     {
         $preferences = Preference::all();
         return response()->json($preferences);
     }
 
     // Get preference by id
-    public function getone($id)
+    public function getOne($id)
     {
         $preference = Preference::find($id);
         if (!$preference) {

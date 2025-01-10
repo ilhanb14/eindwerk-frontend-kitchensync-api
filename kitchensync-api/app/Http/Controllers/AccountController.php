@@ -7,14 +7,14 @@ use Illuminate\Http\Request;
 
 class AccountController extends Controller {
     // Get all accounts
-    public function getall()
+    public function getAll()
     {
         $accounts = Account::all();
         return response()->json($accounts);
     }
 
     // Get account by id
-    public function getone($id)
+    public function getOne($id)
     {
         $account = Account::find($id);
         if (!$account) {
