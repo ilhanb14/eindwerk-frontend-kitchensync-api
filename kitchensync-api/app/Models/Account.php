@@ -10,4 +10,7 @@ class Account extends Model
 
     // Disable timestamps
     public $timestamps = false;
+
+    // Set the table name, this is by default accounts if model name is Account
+    // protected $table = 'accounts'; 
 }
