@@ -6,11 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Preference extends Model
 {
-    protected $fillable = ['name'];
+    protected $fillable = [
+        'name'
+    ];
 
     // Disable timestamps
     public $timestamps = false;
 
     // Set the table name, this is by default preferences if model name is Preference
-    // protected $table = 'preferences'; 
+    // protected $table = 'preferences';
+
+    public function accounts()
+    {
+        return $this->belongsToMany(Account::class)
+            ->withPivot('important');
+    }
 }

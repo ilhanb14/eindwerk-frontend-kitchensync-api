@@ -8,6 +8,8 @@ require base_path('routes/plannedMeals.php');
 
 require base_path('routes/preferences.php');
 
+require base_path('routes/accountpreference.php');
+
 require base_path('routes/likedMeals.php');
 
 require base_path('routes/requests.php');
@@ -17,3 +19,4 @@ require base_path('routes/families.php');
 require base_path('routes/accounttypes.php');
 
 require base_path('routes/mealtimes.php');
+
