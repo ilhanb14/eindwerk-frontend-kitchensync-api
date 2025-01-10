@@ -13,3 +13,5 @@ require base_path('routes/likedMeals.php');
 require base_path('routes/requests.php');
 
 require base_path('routes/families.php');
+
+require base_path('routes/accounttypes.php');
