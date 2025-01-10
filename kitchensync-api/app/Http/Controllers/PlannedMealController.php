@@ -25,8 +25,6 @@ class PlannedMealController extends Controller {
         } else {
             return response()->json(['message' => 'Invalid date format. Use YYYY-MM-DD.'], 400);
         }
-        
-        
     }
 
     // Add a planned meal
@@ -34,5 +32,29 @@ class PlannedMealController extends Controller {
     {
         $account = PlannedMeal::create($request->all());
         return response()->json(['message' => 'Meal planned successfully'], 201);
+    }
+
+    // Update planned meal
+    public function put(Request $request, $id)
+    {
+        $planned_meal = PlannedMeal::find($id);
+        if (!$planned_meal) {
+            return response()->json(['message' => 'Planned meal not found'], 404);
+        } else {
+            $planned_meal->update($request->only(['meal_id', 'date', 'mealtime_id', 'servings']));
+            return response()->json(['message' => 'Planned meal updated successfully'], 200);
+        }
+    }
+
+    // Delete planned meal
+    public function delete($id)
+    {
+        $planned_meal = PlannedMeal::find($id);
+        if (!$planned_meal) {
+            return response()->json(['message' => 'Planned meal not found'], 404);
+        }
+
+        $planned_meal->delete();
+        return response()->json(['message' => 'Planned meal deleted successfully']);
     }
 }
