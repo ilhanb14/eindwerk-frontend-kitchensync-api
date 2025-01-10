@@ -20,3 +20,15 @@ Route::get('plannedmeals/{family_id}/{date}', function ($family_id, $date) {
         return response()->json(['message' => 'Invalid date format. Use YYYY-MM-DD.'], 400);
     }
 });
+
+// Add a planned meal
+Route::post('/plannedmeals', function (Request $request) {
+    $meal_id = $request->input('meal_id');
+    $family_id = $request->input('family_id');
+    $date = $request->input('date');
+    $mealtime_id = $request->input('mealtime_id');
+    $servings = $request->input('servings');
+
+    DB::insert('INSERT INTO plannedmeals (meal_id, family_id, date, mealtime_id, servings) VALUES (?, ?, ?, ?, ?)', [$meal_id, $family_id, $date, $mealtime_id, $servings]);
+    return response()->json(['message' => 'Meal planned successfully'], 201);
+});
