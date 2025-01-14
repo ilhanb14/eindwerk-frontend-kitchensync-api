@@ -18,8 +18,11 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
+        'family_id',
         'email',
+        'user_type_id',
         'password',
     ];
 
@@ -44,5 +47,11 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function preferences()
+    {
+        return $this->belongsToMany(Preference::class)
+            ->withPivot('important');
     }
 }

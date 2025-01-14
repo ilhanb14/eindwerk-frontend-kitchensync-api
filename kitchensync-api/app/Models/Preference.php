@@ -16,9 +16,9 @@ class Preference extends Model
     // Set the table name, this is by default preferences if model name is Preference
     // protected $table = 'preferences';
 
-    public function accounts()
+    public function users()
     {
-        return $this->belongsToMany(Account::class)
+        return $this->belongsToMany(User::class)
             ->withPivot('important');
     }
 }
