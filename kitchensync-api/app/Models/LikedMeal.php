@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class LikedMeal extends Model
 {
-    protected $fillable = ['meal_id', 'account_id'];
+    protected $fillable = ['meal_id', 'user_id'];
 
     // Disable timestamps
     public $timestamps = false;

@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 
 class LikedMealController extends Controller
 {
-    // Get all liked meals by account_id
-    public function getAllByAccountId($account_id)
+    // Get all liked meals by user_id
+    public function getAllByUserId($user_id)
     {
-        $liked_meals = LikedMeal::where('account_id', $account_id)->get();
+        $liked_meals = LikedMeal::where('user_id', $user_id)->get();
         return response()->json($liked_meals);
     }
 
