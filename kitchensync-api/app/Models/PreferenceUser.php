@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class AccountPreference extends Pivot
+class PreferenceUser extends Pivot
 {
     protected $fillable = [
-        'account_id',
+        'user_id',
         'preference_id',
         'important'
     ];
@@ -15,5 +15,5 @@ class AccountPreference extends Pivot
     // Disable timestamps
     public $timestamps = false;
 
-    protected $table = 'account_preference';
+    protected $table = 'preference_user';
 }
