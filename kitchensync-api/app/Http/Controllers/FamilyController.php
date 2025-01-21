@@ -22,7 +22,10 @@ class FamilyController extends Controller
     public function post(Request $request)
     {
         $family = Family::create($request->all());
-        return response()->json(['message' => 'Family created successfully'], 201);
+        return response()->json([
+            'message' => 'Family created successfully',
+            'family_id' => $family->id
+        ], 201);
     }
 
     // Update family
