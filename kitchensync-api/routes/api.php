@@ -23,6 +23,8 @@ require base_path('routes/mealtimes.php');
 
 require base_path('routes/invitations.php');
 
+require base_path('routes/cuisines.php');
+
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/verify-token', [AuthController::class, 'verifyToken']);
 Route::post('/register', [AuthController::class, 'register']);
