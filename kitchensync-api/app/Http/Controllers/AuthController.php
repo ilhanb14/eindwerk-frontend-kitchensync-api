@@ -88,10 +88,7 @@ class AuthController extends Controller
         $user->last_name = $request->input('last_name');
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password'));
-        $user->remember_token = Str::random(20); // Generate random token
-        $user->user_type_id = $request->input('user_type_id');
-        $user->family_id = $request->input('family_id');
-        
+        $user->remember_token = Str::random(20); // Generate random token   
 
         try {
             $user->save();
