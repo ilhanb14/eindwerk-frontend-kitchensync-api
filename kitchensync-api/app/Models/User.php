@@ -56,4 +56,12 @@ class User extends Authenticatable
         return $this->belongsToMany(Preference::class)
             ->withPivot('important');
     }
+
+    public function family() {
+        return $this->belongsTo(Family::class, 'family_id');
+    }
+
+    public function userType() {
+        return $this->belongsTo(UserType::class, 'user_type_id');
+    }
 }
