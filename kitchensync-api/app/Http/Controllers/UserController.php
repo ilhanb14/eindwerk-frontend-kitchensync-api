@@ -24,6 +24,15 @@ class UserController extends Controller {
         return response()->json($user);
     }
 
+    // Get users in family
+    public function getByFamily($familyId)
+    {
+        $users = User::where('family_id', $familyId)
+            ->with(['family', 'userType'])
+            ->get();
+        return response()->json($users);
+    }
+
     // Add user
     public function post(Request $request)
     {
