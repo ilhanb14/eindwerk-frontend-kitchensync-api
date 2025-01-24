@@ -116,4 +116,13 @@ class InvitationController extends Controller
             ->with(['inviter', 'family', 'status'])
             ->get();
     }
+
+    public function delete($invitationId) {
+        $invitation = Invitation::find($invitationId);
+        if (!$invitation) {
+            return response()->json(['message' => 'Invitation not found'], 404);
+        }
+        $invitation->delete();
+        return response()->json(['message' => 'Invitation deleted successfully']);
+    }
 }
