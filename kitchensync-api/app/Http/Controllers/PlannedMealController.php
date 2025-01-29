@@ -30,8 +30,11 @@ class PlannedMealController extends Controller {
     // Add a planned meal
     public function post(Request $request)
     {
-        $user = PlannedMeal::create($request->all());
-        return response()->json(['message' => 'Meal planned successfully'], 201);
+        $planned_meal = PlannedMeal::create($request->all());
+        return response()->json([
+            'message' => 'Meal planned successfully',
+            'id' => $planned_meal->id
+        ], 201);
     }
 
     // Update planned meal
