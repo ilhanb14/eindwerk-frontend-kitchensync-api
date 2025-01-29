@@ -7,3 +7,4 @@ use App\Http\Controllers\InvitationController;
 Route::post('/invitations', [InvitationController::class, 'invite']);
 Route::patch('/invitations/{id}', [InvitationController::class, 'respond']);
 Route::get('/invitations/{user_id}', [InvitationController::class, 'getUserInvitations']);
+Route::delete('/invitations/{id}', [InvitationController::class, 'delete']);
